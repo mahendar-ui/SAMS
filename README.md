@@ -5,8 +5,11 @@ https://github.com/mahendar-ui/SAMS.git
 
 # Install
  Required Node.js version (12.11.1)
+ 
  Required VS Code
+ 
  Required SQL Server
+ 
  Required Workbench
  
  Step 1 :  Open folder from your local machine in VS code editor

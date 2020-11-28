@@ -1,3 +1,22 @@
+# SETUP
+
+Clone or download zip folder from this link
+https://github.com/mahendar-ui/SAMS.git
+
+# Install
+ Required Node.js version (12.11.1)
+ Required VS Code
+ Required SQL Server
+ Required Workbench
+ 
+ Step 1 :  Open folder from your local machine in VS code editor
+ step 2 :  Open terminal
+ step 3 :  exculte this commmand  ---> npm install  (will take long time to install all modules)
+ step 4 : Import DB into Workbench ( find sql file in root path SQL folder)
+ step 5 :  Open second terminal in VS Code and connect to folder (server) ex : 'c://mahender/sams/server'
+ step 6 : Excute command ---> node app.js  (connect to node)
+ step 7 : Excute command ---> ng serve --open (browser open application)
+
 # PXBOffice
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.7.

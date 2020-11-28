@@ -1,0 +1,163 @@
+<div class="container acc-app">
+    <div class="card head-title">
+        <div class="card-body d-flex align-items-center justify-content-between flex-wrap py-3">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center mr-2 py-2">
+                <!--begin::Title-->
+                <h3 class="font-weight-bold mb-0 mr-10">Account Application</h3>
+                <!--end::Title-->
+                <!--begin::Navigation-->
+                
+        </div>
+        </div>
+        </div>
+    <div class="card">
+        <div class="card-body py-4 col-8">
+            <ia-auth-notice></ia-auth-notice>
+    <form class="form" [formGroup]="accountForm" autocomplete="off">
+    
+            <div class="form-group">
+                <mat-form-field>
+                    <mat-label>Firstname</mat-label>
+                    <input matInput type="text" placeholder="Firstname" formControlName="firstname" />
+                    <mat-error *ngIf="isControlHasError('firstname','required')">
+                        <strong>Firstname required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field>
+                    <mat-label>Lastname</mat-label>
+                    <input matInput type="text" placeholder="Lastname" formControlName="lastname" />
+                    <mat-error *ngIf="isControlHasError('firstname','required')">
+                        <strong>Lastname required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field>
+                    <mat-label>Student ID</mat-label>
+                    <input matInput type="text" placeholder="Student Id" formControlName="student_id" />
+                    <mat-error *ngIf="isControlHasError('student_id','required')">
+                        <strong>Student ID required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field>
+                    <mat-label>Student Email</mat-label>
+                    <input matInput type="email" placeholder="Student Id" formControlName="student_email" />
+                    <mat-error *ngIf="isControlHasError('student_email','required')">
+                        <strong>Student Email required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field>
+                    <mat-label>Phone Number</mat-label>
+                    <input matInput type="email" placeholder="Phone Number" formControlName="phone_number" />
+                    <mat-error *ngIf="isControlHasError('phone_number','required')">
+                        <strong>Phone Number required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            
+        <div class="form-group">
+            <mat-form-field>
+                <mat-label>Choose University</mat-label>
+                <mat-select formControlName="university" >
+                  <mat-option *ngFor="let university of universities" [value]="university.value">
+                    {{university.viewValue}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="isControlHasError('stakeholder_university','required')">
+                    <strong>This is require field</strong>
+                </mat-error>
+              </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field>
+                <mat-label>Course</mat-label>
+                <input matInput type="email" placeholder="Course" formControlName="course" />
+                <mat-error *ngIf="isControlHasError('phone_number','required')">
+                    <strong>Course required</strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field>
+                <mat-label>Choose Bank</mat-label>
+                <mat-select formControlName="bank" >
+                  <mat-option *ngFor="let bank of banks" [value]="bank.value">
+                    {{bank.viewValue}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="isControlHasError('stakeholder_bank','required')">
+                    <strong>This is require field</strong>
+                </mat-error>
+              </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field>
+                <mat-label>Address</mat-label>
+                <input matInput type="text" placeholder="Address" formControlName="address" />
+                <mat-error *ngIf="isControlHasError('address','required')">
+                    <strong>Address required</strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field>
+                <mat-label>City</mat-label>
+                <input matInput type="text" placeholder="City" formControlName="city" />
+                <mat-error *ngIf="isControlHasError('city','required')">
+                    <strong>Address required</strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field>
+                <mat-label>Postcode</mat-label>
+                <input matInput type="text" placeholder="Postcode" formControlName="postcode" />
+                <mat-error *ngIf="isControlHasError('postcode','required')">
+                    <strong>Postcode required</strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field>
+                <mat-label>Passport</mat-label>
+                <input matInput type="text" placeholder="Passport" formControlName="passport" />
+                <mat-error *ngIf="isControlHasError('passport','required')">
+                    <strong>Passport required</strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field>
+                <mat-label>BRP Number</mat-label>
+                <input matInput type="text" placeholder="BRPNumber" formControlName="brpnumber" />
+                <mat-error *ngIf="isControlHasError('brpnumber','required')">
+                    <strong>BRPNumber required</strong>
+                </mat-error>            
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field>
+                <mat-label>Message</mat-label>
+                <textarea matInput type="text" placeholder="Message" formControlName="message" ></textarea>
+            </mat-form-field>
+        </div>
+        <!--begin::Action-->
+        <div class="form-group d-flex flex-wrap flex-center">
+            <button (click)="submit()" id="kt_login_signup_submit"
+                class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-4"
+                [ngClass]="{'spinner spinner-right spinner-md spinner-light': loading}">Save</button>
+            <a routerLink="/auth/login" id="kt_login_signup_cancel"
+                class="btn btn-light-primary font-weight-bold px-9 py-4 my-3 mx-4">Cancel</a>
+        </div>
+        <!--end::Action-->
+    </form>
+</div>
+</div>
+</div>

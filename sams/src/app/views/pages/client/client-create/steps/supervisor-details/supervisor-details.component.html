@@ -1,0 +1,62 @@
+<div class="wizard wizard-3" id="kt_wizard_v3">
+    <!--begin: Form Wizard Step 1-->
+    <div class="pb-5" data-wizard-type="step-content" data-wizard-state="current">
+        <form action="#" [formGroup]="supervisorDetailsForm" class="kt-form" autocomplete="off">
+            <!--begin: Form Wizard Step 3-->
+            <mat-checkbox (change)="changeSupervisorDetails($event)" class="client_checkbox">
+                <h4>Same as Contact Details!</h4>
+            </mat-checkbox>
+            <div class="row">
+                <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                    <mat-form-field appearance="outline" class="mat-form-field-fluid">
+                        <mat-label>Supervisor Firstname</mat-label>
+                        <input matInput placeholder="Enter Supervisor Firstname"
+                            formControlName="supervisorFirstname" />
+                        <mat-error>Supervisor Firstname
+                            <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                    <mat-form-field appearance="outline" class="mat-form-field-fluid">
+                        <mat-label>Supervisor Email</mat-label>
+                        <input matInput placeholder="Enter Supervisor Email" formControlName="supervisorEmail" />
+                        <mat-error>Supervisor Email
+                            <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                    <mat-form-field appearance="outline" class="mat-form-field-fluid">
+                        <input matInput type="text" [ng2TelInputOptions]="{initialCountry: 'gb'}" ng2TelInput
+                            (countryChange)="countryChange($event)" appPhoneMask
+                            placeholder="Enter Supervisor Phonenumber" formControlName="supervisorPhonenumber" />
+                        <mat-error>Supervisor Phonenumber
+                            <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+            </div>
+            <!--end: Form Wizard Step 3-->
+        </form>
+        <!--begin: Form Actions -->
+        <div class="d-flex justify-content-between border-top pt-10">
+            <div class="mr-2">
+                <div class="btn btn-light-primary font-weight-bold text-uppercase px-9 py-4" (click)="prevStep()"
+                    style="display: block;">
+                    Previous
+                </div>
+            </div>
+            <div>
+                <div class="btn btn-primary font-weight-bold text-uppercase px-9 py-4" style="display: block;"
+                    (click)="nextStep()">
+                    Next Step
+                </div>
+            </div>
+        </div>
+        <!--end: Form Actions -->
+    </div>
+</div>

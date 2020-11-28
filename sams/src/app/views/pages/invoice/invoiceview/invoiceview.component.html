@@ -1,0 +1,146 @@
+<ia-portlet>
+<div class="modal-body px-0">
+	<div class="invoice_1_prnt" style="overflow-y: hidden; height: calc(100vh);">
+	  <div class="px-2" style="overflow-y: auto; height: 100%;">
+	<!--begin::Form-->
+		<form [formGroup]="invoiceForm">
+			<div class="container-fluid">
+				<div class="card card-custom overflow-hidden">
+					<div class="card-body invoice-6 p-0">
+						<!--begin::Invoice-->
+						<div class="invoice-6-container bgi-size-contain bgi-no-repeat bgi-position-y-top bgi-position-x-center">
+							<div class="container-fluid">
+								<div class="row justify-content-center py-8 px-8 py-md-27 px-md-0">
+									<div class="col-md-9">
+										<!--begin::Invoice header-->
+										<div class="d-flex justify-content-between align-items-center flex-column flex-md-row mb-40">
+											<h1 class="display-3 font-weight-boldest text-white mb-5 mb-md-0">INVOICE</h1>
+											<div class="d-flex flex-column px-0 text-right">
+												<span class="d-flex flex-column font-size-h5 font-weight-bold text-white align-items-center align-items-md-end">
+													<span class="mb-2">Reciept # 1596</span>
+													<span>{{invoice.invoice_created_date|date: 'dd/MM/yyyy'}}</span>
+												</span>
+											</div>
+										</div>
+										<!--end::Invoice header-->
+										<!--begin::Invoice body-->
+										<div class="table-responsive">
+											<table class="table">
+												<thead>
+													<tr class="font-weight-boldest title-color">
+														<td class="align-middle font-size-h4 pl-0 border-0 pb-10">DESCRIPTION</td>
+														<td class="align-middle font-size-h4 text-right border-0 pb-12">HOURS</td>
+														<td class="align-middle font-size-h4 text-right border-0 pb-12">RATE</td>
+														<td class="align-middle font-size-h4 text-right pr-0 border-0 pb-12">AMOUNT</td>
+													</tr>
+												</thead>
+												<tbody>
+													<tr class="font-size-h5 font-weight-bolder text-white">
+														<td class="align-middle pl-0 border-0 py-4">Creative Design</td>
+														<td class="align-middle font-size-lg text-right border-0 py-4">80</td>
+														<td class="align-middle font-size-lg text-right border-0 py-4">$40.00</td>
+														<td class="align-middle text-right text-primary font-weight-boldest font-size-h5 pr-0 border-0 py-4">$3200.00</td>
+													</tr>
+													<tr class="font-size-h5 font-weight-bolder text-white">
+														<td class="align-middle pl-0 border-0 py-4">Front-End Development</td>
+														<td class="align-middle font-size-lg text-right border-0 py-4">210</td>
+														<td class="align-middle font-size-lg text-right border-0 py-4">$40.00</td>
+														<td class="align-middle text-right border-0 text-primary font-weight-boldest font-size-h5 pr-0 py-4">$12600.00</td>
+													</tr>
+													<tr class="font-size-h5 font-weight-bolder text-white">
+														<td class="align-middle pl-0 border-0 py-4">Back-End Development</td>
+														<td class="align-middle font-size-lg text-right border-0 py-4">240</td>
+														<td class="align-middle font-size-lg text-right border-0 py-4">$45.00</td>
+														<td class="align-middle text-right border-0 text-primary font-weight-boldest font-size-h5 pr-0 py-4">$13600.00</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+										<!--end::Invoice body-->
+										<div class="border-bottom w-100 my-13 opacity-15"></div>
+										<!--begin::Invoice total-->
+										<div class="row">
+											<div class="col-md-6">
+												<div class="d-flex flex-column text-white mb-5 mb-md-0">
+													<div class="font-weight-boldest font-size-h4 mb-3 title-color">BANK TRANSFER</div>
+													<div class="table-responsive">
+														<table class="table font-size-h5">
+															<tbody>
+																<tr class="text-white">
+																	<td class="font-weight-boldest border-0 pl-0 w-50">Account Name:</td>
+																	<td class="border-0">{{invoice.invoice_name}}</td>
+																</tr>
+																<tr class="text-white">
+																	<td class="font-weight-boldest border-0 pl-0 w-50">Account Number:</td>
+																	<td class="border-0">1234567890934</td>
+																</tr>
+																<tr class="text-white">
+																	<td class="font-weight-boldest border-0 pl-0 w-50">Code:</td>
+																	<td class="border-0">BARC0032UK</td>
+																</tr>
+															</tbody>
+														</table>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="table-responsive">
+													<table class="table text-md-right font-weight-boldest">
+														<tbody>
+															<tr>
+																<td class="align-middle title-color font-size-lg border-0 pt-0 pl-0 w-50">SUBTOTAL</td>
+																<td class="align-middle text-primary font-size-h3 border-0 pt-0">$63800.00</td>
+															</tr>
+															<tr>
+																<td class="align-middle title-color font-size-h4 border-0 py-7 pl-0 w-50">TAXES</td>
+																<td class="align-middle text-primary font-size-h3 border-0 py-7">$15.00</td>
+															</tr>
+															<tr>
+																<td class="align-middle title-color font-size-h4 border-0 pl-0 w-50">GRAND TOTAL</td>
+																<td class="align-middle text-primary font-size-h2 border-0">$63815.00</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</div>
+										<!--end::Invoice total-->
+										<!--begin::Invoice note-->
+										<div class="d-flex flex-wrap align-items-end mt-30">
+											<div>
+												<div class="font-size-h4 font-weight-boldest title-color mb-3">NOTE</div>
+												<div class="font-size-h6 font-weight-bold note-color max-w-375px">Lorem ipsum dolor sit amet, consectetur magna aliqua. Ut enim ad minim veniam, quis Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla</div>
+											</div>
+										</div>
+										<!--end::Invoice note-->
+										<!--begin::Invoice footer-->
+										<div class="d-flex justify-content-between flex-column flex-sm-row text-center text-sm-left mt-30">
+											<div class="font-size-h2 font-weight-bolder text-white">Thanks For Your Order</div>
+										</div>
+										<!--end::Invoice footer-->
+										<!-- begin: Invoice action-->
+											<div class="row py-8 px-8 py-md-28 px-md-0">
+												<div class="col-md-9">
+													<div class="d-flex font-size-sm flex-wrap">
+														<button type="button" class="btn btn-danger font-weight-bolder py-4 mr-3 mr-sm-14 my-1 px-7" 
+														(click)="invoicePrint()"><span><i class="fa fa-print"
+															aria-hidden="true"></i></span>Print Invoice</button>
+														<button type="button" (click)="downloadPDF(invoice)" class="btn btn-light-danger font-weight-bolder mr-3 my-1 px-7">Download</button>
+													</div>
+												</div>
+											</div>
+										<!-- end: Invoice action-->
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--end::Invoice-->
+					</div>
+				</div>
+			</div>
+	</form>
+	<!--end::Form-->
+</div>
+</div>
+</div>
+</ia-portlet>

@@ -1,0 +1,56 @@
+<div class="wizard wizard-3" id="kt_wizard_v3">
+    <!--begin: Form Wizard Step 1-->
+    <div class="pb-5" data-wizard-type="step-content" data-wizard-state="current">
+        <form action="#" [formGroup]="clientContactForm" class="kt-form" autocomplete="off">
+            <div class="row">
+                <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                    <mat-form-field appearance="outline" class="mat-form-field-fluid">
+                        <mat-label>Contact Name</mat-label>
+                        <input matInput placeholder="Enter Contact Name" formControlName="contactname" />
+                        <mat-error>Contact Name
+                            <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                    <mat-form-field appearance="outline" class="mat-form-field-fluid">
+                        <mat-label>Contact Email</mat-label>
+                        <input matInput placeholder="Enter Contact Email" formControlName="contactemail" />
+                        <mat-error>Contact Email
+                            <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                    <mat-form-field appearance="outline" class="mat-form-field-fluid">
+                        <input matInput placeholder="Enter Contact Phone" type="text"
+                        [ng2TelInputOptions]="{initialCountry: 'gb'}" ng2TelInput
+                        (countryChange)="countryChange($event)" appPhoneMask formControlName="contactphone" />
+                        <mat-error>Contact Phone
+                            <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+            </div>
+        </form>
+        <!--begin: Form Actions -->
+        <div class="d-flex justify-content-between border-top pt-10">
+            <div class="mr-2">
+                <div class="btn btn-light-primary font-weight-bold text-uppercase px-9 py-4"
+                (click)="prevStep()" style="display: block;">
+                    Previous
+                </div>
+            </div>
+            <div>
+                <div class="btn btn-primary font-weight-bold text-uppercase px-9 py-4" style="display: block;"
+                (click)="nextStep()">
+                    Next Step
+                </div>
+            </div>
+        </div>
+        <!--end: Form Actions -->
+    </div>
+</div>

@@ -1,0 +1,59 @@
+<div class="contract-filters">
+    <!--begin: Form-->
+    <form action="#" [formGroup]="contractForm" class="kt-form" autocomplete="off">
+        <kt-alert *ngIf="message" type="warn" (close)="onAlertClose($event)" [showCloseButton]="true"
+            [duration]="5000">
+            Please Enter a valid Job id.
+        </kt-alert>
+        <div class="form-group row">
+            <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                <mat-form-field class="mat-form-field-fluid" appearance="outline">
+                    <mat-label>Consultant Name</mat-label>
+                    <input matInput placeholder="Enter ConsultantName" formControlName="consultname" />
+                    <mat-error>Consultant Name is
+                        <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                <mat-form-field class="mat-form-field-fluid" appearance="outline">
+                    <mat-label>Job Id</mat-label>
+                    <input matInput placeholder="Enter Job id" type="number" formControlName="jobid" />
+                    <mat-error>Job Id
+                        <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <a href="javascript:;" class="btn btn-primary mr-2 contract_date_sbmt" color="primary"
+                [ngClass]="{'btn-disable': isDisabled}" (click)="contractFilter()" mat-raised-button
+                matTooltip="Search changes">
+                <i class="la la-cog"></i>
+                <span class="hidden-mobile">Search</span>
+            </a>
+            <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Start Date</mat-label>
+                    <input matInput [matDatepicker]="picker1" (focus)="picker1.open()"
+                        placeholder="Please Enter Start Date" formControlName="startdate">
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                    <mat-error>Start Date
+                        <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>End date</mat-label>
+                    <input matInput [matDatepicker]="picker" (focus)="picker.open()" [min]="startdate.value"
+                        placeholder="Please Enter End Date" formControlName="enddate">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error>End Date
+                        <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+</div>

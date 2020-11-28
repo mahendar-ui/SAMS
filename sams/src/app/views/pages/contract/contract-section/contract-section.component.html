@@ -1,0 +1,57 @@
+<ia-portlet>
+    <ia-portlet-header [class]="'card-head-lg'">
+        <ng-container ktPortletTools>
+            <a [routerLink]="['/contract/contract-list']" class="btn btn-secondary mr-2" mat-raised-button
+                matTooltip="Back to the contract list">
+                <i class="la la-arrow-left"></i>
+                <span class="hidden-mobile">Back</span>
+            </a>
+            <a href="javascript:;" class="btn btn-secondary mr-2" (click)="reset()" mat-raised-button
+                matTooltip="Reset changes">
+                <i class="la la-cog"></i>
+                <span class="hidden-mobile">Reset</span>
+            </a>
+            <a href="javascript:;" class="btn btn-primary mr-2" color="primary" (click)="onSubmit(false)"
+                mat-raised-button matTooltip="Save">
+                <span class="hidden-mobile">Save</span>
+            </a>
+            <a *ngIf="curentUserRoles =='1'" href="javascript:;" class="btn btn-primary mr-2" color="primary"
+                (click)="onSubmit(false)" mat-raised-button matTooltip="Authorized">
+                <span class="hidden-mobile">Authorized</span>
+            </a>
+        </ng-container>
+    </ia-portlet-header>
+    <ia-portlet-body>
+        <div class="row">
+            <!--begin: Form Wizard Form-->
+            <form action="#" [formGroup]="contractStepsForm" class="kt-form" autocomplete="off">
+                <kt-alert *ngIf="hasFormErrors" type="warn" [showCloseButton]="true" [duration]="10000"
+                    (close)="onAlertClose($event)">
+                    Oh snap! Change a few things up and try submitting again.
+                </kt-alert>
+                <kt-contract-filters [contractForm]="contractStepsForm.controls.contractForm"></kt-contract-filters>
+                <div #wizard class="wizard wizard-3" id="kt_wizard_v3" data-wizard-state="step-first"
+                    [ngClass]="{'btn-disablew': !isWizardDisabled}">
+                    <kt-contract-mat-steps></kt-contract-mat-steps>
+                    <div class="row justify-content-center py-12 px-8 py-lg-10 px-lg-2 kt_employee-wizard-steps">
+                        <div class="col-xl-12 col-xxl-12 kt_responsive-section">
+                            <!-- Wizard Step 1 Start -->
+                            <kt-project-details [projectForm]="contractStepsForm.controls.projectForm"
+                                (nextSubmit)="nextSubmit()"></kt-project-details>
+                            <!-- Wizard Step 1 End -->
+                            <!-- Wizard Step 2 Start -->
+                            <kt-client-details [clientForm]="contractStepsForm.controls.clientForm"
+                                (nextSubmit)="nextSubmit()" (prevSubmit)="prevSubmit()"></kt-client-details>
+                            <!-- Wizard Step 2 End -->
+                            <!-- Wizard Step 3 Start -->
+                            <kt-employee-detail [employeeForm]="contractStepsForm.controls.employeeForm"
+                                (nextSubmit)="nextSubmit()" (prevSubmit)="prevSubmit()"></kt-employee-detail>
+                            <!-- Wizard Step 3 End -->
+                            <!--end: Form Wizard Form-->
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </ia-portlet-body>
+</ia-portlet>

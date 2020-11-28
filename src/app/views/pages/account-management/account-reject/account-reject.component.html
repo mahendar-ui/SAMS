@@ -1,0 +1,39 @@
+<div class="card card-custom">
+    <div class="card-header">
+        <div class="card-title">
+            <span>{{account.firstname}}</span>
+            &nbsp;&nbsp;
+            <span>{{account.lastname}}</span>
+            &nbsp;&nbsp;
+            <h3 class="card-label">Application</h3>
+        </div>
+    </div>
+    <form action="#" [formGroup]="rejectForm" class="kt-form">
+        <div class="card-body" *ngIf="stakeHolder === 'BOS'">
+            <div class="form-group">
+                    <mat-form-field>
+                        <textarea matInput type="text" placeholder="Message" formControlName="bos_message" ></textarea>
+                    </mat-form-field>
+            </div>
+        </div>
+        <div class="card-body" *ngIf="stakeHolder === 'UAD'">
+            <div class="form-group">
+                    <mat-form-field>
+                        <textarea matInput type="text" placeholder="Message" formControlName="uad_message" ></textarea>
+                    </mat-form-field>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="d-flex justify-content-between">
+                <div class="mr-2"></div>
+                <div>
+                    <button class="mat-focus-indicator mat-button mat-button-base" mat-button mat-dialog-close><span
+                            class="mat-button-wrapper">Cancel</span>
+                    </button>&nbsp;
+                    <button class='btn btn-primary' (click)="applicationRejec()" mat-button
+                        [mat-dialog-close]="data.animal" (click)="applicationRejec()" cdkFocusInitial>Rejected</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

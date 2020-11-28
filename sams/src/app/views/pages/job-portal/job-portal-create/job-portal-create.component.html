@@ -1,0 +1,147 @@
+<ia-portlet>
+    <ia-portlet-header [class]="'card-head-lg'">
+        <ng-container ktPortletTools>
+
+            <a href="javascript:;" class="btn btn-secondary mr-2" (click)="reset()" mat-raised-button
+                matTooltip="Reset changes">
+                <i class="la la-cog"></i>
+                <span class="hidden-mobile">Reset</span>
+            </a>
+            <a href="javascript:;" class="btn btn-primary mr-2" color="primary" (click)="onSubmit()" mat-raised-button
+                matTooltip="Save">
+                <span class="hidden-mobile">Save</span>
+            </a>
+        </ng-container>
+    </ia-portlet-header>
+    <ia-portlet-body>
+        <div class="col-xl-12 col-xxl-7">
+            <form action="#" [formGroup]="JobPortalForm">
+                <kt-alert *ngIf="hasFormErrors" type="warn" [showCloseButton]="true" [duration]="10000"
+                    (close)="onAlertClose($event)">
+                    Oh snap! Change a few things up and try submitting again.
+                </kt-alert>
+                <div class="invoice_job_prt">
+                    <div class="form-group row">
+                        <div class="col-lg-12 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="mat-form-field-fluid" appearance="outline">
+                                <mat-label>JobTitle</mat-label>
+                                <input matInput placeholder="Enter JobTitle" formControlName="jobtitle" />
+                                <mat-error>JobTitle is
+                                    <strong>required</strong>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-12 kt-margin-bottom-20-mobile">
+                            <editor apiKey="qagffr3pkuv17a8on1afax661irst1hbr4e6tbv888sz91jc"
+                            [formControl]="JobPortalForm.controls.jobdescription"
+                            class="mat-elevation-z1"
+                                (onInit)="handleEditorInit($event)" [init]="{
+                              icons: 'material',
+                              skin: 'borderless',
+                              plugins: 'wordcount',
+                              menubar: false,
+                              min_height: 150
+                            }"></editor>
+                    <!-- <div class="mat-form-field-subscript-wrapper">
+                        <mat-error *ngIf="JobPortalForm.controls.jobdescription.hasError('maxlength')">
+                            Your post exceeds exceeds the character limit
+                            {{ JobPortalForm.controls.jobdescription.getError('maxlength').actualLength }} / 
+                            {{ JobPortalForm.controls.jobdescription.getError('maxlength').requiredLength }}
+                        </mat-error>
+                
+                        <mat-error *ngIf="JobPortalForm.controls.jobdescription.touched && JobPortalForm.controls.jobdescription.hasError('required')">
+                            This form is required
+                        </mat-error>
+                        </div> -->
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="mat-form-field-fluid" appearance="outline">
+                                <mat-label>Skills</mat-label>
+                                <mat-chip-list #chipList aria-label="Skill selection">
+                                    <input placeholder="New skill..." #skillInput [formControl]="skillCtrl"
+                                        formControlName="skillGroup" [matAutocomplete]="auto"
+                                        [matChipInputFor]="chipList"
+                                        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                        (matChipInputTokenEnd)="add($event)">
+                                </mat-chip-list>
+                                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                                    <mat-option *ngFor="let skill of filteredSkills | async" [value]="skill">
+                                        {{skill}}
+                                    </mat-option>
+                                </mat-autocomplete>
+                            </mat-form-field>
+                            <mat-chip *ngFor="let skill of skills" [selectable]="selectable" [removable]="removable"
+                                (removed)="remove(skill)">
+                                {{skill}}
+                                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                            </mat-chip>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="mat-form-field-fluid" appearance="outline">
+                                <mat-label>JobType</mat-label>
+                                <mat-select placeholder="Please select" formControlName="jobtype">
+                                    <mat-option>Please select</mat-option>
+                                    <mat-option value="Internship">Internship</mat-option>
+                                    <mat-option value="Part Time">Part Time</mat-option>
+                                    <mat-option value="Temporary">Temporary</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="mat-form-field-fluid" appearance="outline">
+                                <mat-label>Job location</mat-label>
+                                <input matInput placeholder="Enter Work Located" formControlName="location" />
+                                <mat-error>Job location is
+                                    <strong>required</strong>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="mat-form-field-fluid" appearance="outline">
+                                <mat-label>Company Name</mat-label>
+                                <input matInput placeholder="Enter Company Name" formControlName="companyname" />
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="mat-form-field-fluid" appearance="outline">
+                                <mat-label>Address</mat-label>
+                                <input matInput placeholder="Enter Address Line" formControlName="Address" />
+                                <mat-error>Address Line is
+                                    <strong>required</strong>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="mat-form-field-fluid" appearance="outline">
+                                <mat-label>Job From Date</mat-label>
+                                <input matInput [matDatepicker]="picker" placeholder="Please Enter Date"
+                                    formControlName="startdate">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="mat-form-field-fluid" appearance="outline">
+                                <mat-label>Job Expiry Date</mat-label>
+                                <input matInput [matDatepicker]="picker1" placeholder="Please Enter Date"
+                                    formControlName="enddate">
+                                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                <mat-datepicker #picker1></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </ia-portlet-body>
+</ia-portlet>

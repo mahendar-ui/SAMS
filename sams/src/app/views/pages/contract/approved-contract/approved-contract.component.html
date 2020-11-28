@@ -1,0 +1,40 @@
+<div class="card card-custom">
+    <div class="card-header">
+        <div class="card-title">
+            <h3 class="card-label">Contract Approved</h3>
+        </div>
+    </div>
+    <form action="#" [formGroup]="approvedForm" class="kt-form">
+        <div class="card-body">
+            <div class="form-group row">
+                <div class="col-lg-12">
+                    <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                        <mat-form-field class="mat-form-field-fluid" appearance="outline">
+                            <mat-label>Status</mat-label>
+                            <mat-select placeholder="Please select" formControlName="contract_status">
+                                <mat-option>Please select</mat-option>
+                                <mat-option value="Pending">Pending</mat-option>
+                                <mat-option value="Approved">Approved</mat-option>
+                                <mat-option value="Cancelled">Cancelled</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="d-flex justify-content-between">
+                <div class="mr-2"></div>
+                <div>
+                    <button class="mat-focus-indicator mat-button mat-button-base" mat-button mat-dialog-close><span
+                            class="mat-button-wrapper">Cancel</span>
+                    </button>&nbsp; <button cdkfocusinitial=""
+                        class="mat-focus-indicator mat-button mat-button-base mat-primary" color="primary" mat-button=""
+                        data-dismiss="modal" id="closeBtn" (click)="contractSubmit()">
+                        <span class="mat-button-wrapper">Approved</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

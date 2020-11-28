@@ -1,0 +1,69 @@
+<div class="wizard wizard-3" id="kt_wizard_v3">
+    <!--begin: Form Wizard Step 1-->
+    <div class="pb-5" data-wizard-type="step-content" data-wizard-state="current">
+        <form action="#" [formGroup]="clientForm" class="kt-form" autocomplete="off">
+            <div class="row">
+                <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                    <mat-form-field appearance="outline" class="mat-form-field-fluid">
+                        <mat-label>Client Name</mat-label>
+                        <input matInput placeholder="Enter Client Name" formControlName="clientFirstname" />
+                        <mat-error>Client Name is
+                            <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                    <mat-form-field appearance="outline" class="mat-form-field-fluid">
+                        <mat-label>Client Lastname</mat-label>
+                        <input matInput placeholder="Enter Client Lastname" formControlName="clientLastname" />
+                        <mat-error>Client Lastname is
+                            <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                    <mat-form-field appearance="outline" class="mat-form-field-fluid">
+                        <mat-label>Client Email</mat-label>
+                        <input matInput placeholder="Enter Client Email" formControlName="clientEmail" />
+                        <mat-error>Client Email is
+                            <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                    <mat-form-field appearance="outline" class="mat-form-field-fluid">
+                        <mat-select formControlName="clientDetails" placeholder="Select Client Details">
+                            <mat-option>Please select</mat-option>
+                            <mat-option value="Direct">Direct</mat-option>
+                            <mat-option value="Implementor">Implementor</mat-option>
+                            <mat-option value="Vendor">Vendor</mat-option>
+                        </mat-select>
+                        <mat-error>Client Details
+                            <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        </form>
+        <!--end: Form Wizard Step 1-->
+        <!--begin: Form Actions -->
+        <div class="d-flex justify-content-between border-top pt-10">
+            <div class="mr-2">
+                <div class="btn btn-light-primary font-weight-bold text-uppercase px-9 py-4"
+                    data-wizard-type="action-prev">
+                    Previous
+                </div>
+            </div>
+            <div>
+                <div class="btn btn-primary font-weight-bold text-uppercase px-9 py-4" style="display: block;"
+                    (click)="nextStep()">
+                    Next Step
+                </div>
+            </div>
+        </div>
+        <!--end: Form Actions -->
+    </div>
+</div>

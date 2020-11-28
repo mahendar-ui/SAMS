@@ -1,0 +1,162 @@
+<ia-portlet>
+    <!-- PORTLET LOADING | Binded to TABLE Datasource -->
+<!-- See prop => '~/core/_crud/models/data-sources/_base.datasource.ts' (loading$) -->
+<ia-portlet-header [class]="'card-head-lg'">
+    <ng-container ktPortletTools>
+      <!-- start::FILTERS & GROUP ACTIONS -->
+    <div class="form kt-margin-b-30">
+        <!-- start::FILTERS -->
+        <div class="form-jobportal">
+            <div class="row align-items-center">
+                <div class="col-md-2 kt-margin-bottom-10-mobile">
+                    <mat-form-field class="mat-form-field-fluid" appearance="outline">
+                        <input class="search" matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter" #searchInput>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-3 kt-margin-bottom-10-mobile job_list_tp">
+                    <mat-form-field appearance="outline">
+                        <mat-select (selectionChange)="applyJobFilter($event.value)" placeholder="Please Select Job Type">
+                            <mat-option value="">Please select</mat-option>
+                            <mat-option value="Internship">Internship</mat-option>
+                            <mat-option value="Part Time">Part Time</mat-option>
+                            <mat-option value="Temporary">Temporary</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <form [formGroup]="jobPortalForm" class="date-block">
+                <div class="date-block__list job_list">
+                    <mat-form-field appearance="outline">
+                        <input matInput [matDatepicker]="fromDate" placeholder="From Date" 
+                        formControlName="fromDate">
+                        <mat-datepicker-toggle matSuffix [for]="fromDate"></mat-datepicker-toggle>
+                        <mat-datepicker #fromDate></mat-datepicker>
+                    </mat-form-field>
+                </div>&nbsp;&nbsp;
+                <div class="date-block__list">
+                    <mat-form-field appearance="outline">
+                        <input matInput [matDatepicker]="toDate" placeholder="To Date" 
+                        formControlName="toDate">
+                        <mat-datepicker-toggle matSuffix [for]="toDate"></mat-datepicker-toggle>
+                        <mat-datepicker #toDate></mat-datepicker>
+                    </mat-form-field>
+                </div>&nbsp;&nbsp;
+                <div class="btn btn-primary mr-2 job_sbmt" color="primary" data-wizard-type="action-submit">
+                    Search
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- end::FILTERS -->
+
+        <!-- start::GROUP ACTIONS -->
+        <!-- Group actions list: 'Delete selected' | 'Fetch selected' | 'Update status for selected' -->
+        <!-- Group actions are shared for all LISTS -->
+        <div class="row align-items-center collapse form-group-actions kt-margin-top-20 kt-margin-bottom-20"
+            [ngClass]="{'show' : selection.selected.length > 0}"><!-- We show 'Group Actions' div if smth are selected -->
+            <div class="col-xl-12">
+                <div class="form-group form-group-inline">
+                    <div class="form-label form-label-no-wrap">
+                        <label class="font-bold font-danger-">
+                            <span translate="ECOMMERCE.COMMON.SELECTED_RECORDS_COUNT"></span> {{ selection.selected.length }}
+                        </label>
+                        <!-- selectedCountsTitle => function from codeBehind (employees-list.component.ts file) -->
+                        <!-- selectedCountsTitle => just returns title of selected items count -->
+                        <!-- for example: Selected records count: 4 -->
+                    </div>
+                    <div>
+                        <!-- <button (click)="fetchUsers()" mat-raised-button matTooltip="Fetch selected employees"  class="mat-button-mt-4">
+                            <mat-icon>clear_all</mat-icon>
+                            Fetch Selected
+                        </button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end::GROUP ACTIONS -->
+    </div>
+    <!-- end::FILTERS & GROUP ACTIONS -->
+    </ng-container>
+</ia-portlet-header>
+<!-- end::Header -->
+
+<ia-portlet-body>
+           
+    <div class="mat-table__wrapper">
+        <mat-table class="lmat-elevation-z8"
+            #table
+            [dataSource]="dataSource"
+            matSort
+            #sort1="matSort"
+            matSortActive="id"
+            matSortDirection="asc"
+            matSortDisableClear>
+            <!-- Checkbox Column -->
+
+            <!-- Table with selection -->
+            <!-- https://run.stackblitz.com/api/angular/v1?file=app%2Ftable-selection-example.ts -->
+            <ng-container matColumnDef="select">
+                <mat-header-cell *matHeaderCellDef class="mat-column-checkbox">
+                    <mat-checkbox (change)="$event ? masterToggle() : null"
+                        [checked]="selection.hasValue() && isAllSelected()"
+                        [indeterminate]="selection.hasValue() && !isAllSelected()">
+                    </mat-checkbox>
+                </mat-header-cell>
+                <mat-cell *matCellDef="let row" class="mat-column-checkbox">
+                    <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)">
+                    </mat-checkbox>
+                </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="id">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>S.No</mat-header-cell>
+                <mat-cell *matCellDef="let user; let i = index">
+                    {{ (paginatorRef.pageIndex * paginatorRef.pageSize) + (i + 1) }}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="jobTitle">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Job Title</mat-header-cell>
+                <mat-cell *matCellDef="let jobportal">{{jobportal.job_title}}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="companyname">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Company Name</mat-header-cell>
+                <mat-cell *matCellDef="let jobportal">{{jobportal.company_name}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="address">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Job Address</mat-header-cell>
+                <mat-cell *matCellDef="let jobportal">{{jobportal.job_address}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="startdate">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>From Date</mat-header-cell>
+                <mat-cell *matCellDef="let jobportal">{{jobportal.start_date}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="enddate">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>End Date</mat-header-cell>
+                <mat-cell *matCellDef="let jobportal">{{jobportal.end_date}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="jobtype">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Job Type</mat-header-cell>
+                <mat-cell *matCellDef="let jobportal">{{jobportal.job_type}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="actions">
+                <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+                <mat-cell *matCellDef="let jobportal">
+					<button (click)="editJobPortal(jobportal.id)" mat-icon-button color="primary" matTooltip="Edit jobportal">
+                        <mat-icon>create</mat-icon>
+                    </button>&nbsp;
+                    <button mat-icon-button color="warn" matTooltip="Delete jobportal" type="button" (click)="deletJobPortal(jobportal)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+            <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+        </mat-table>
+    </div> 
+    <div class="mat-table__bottom">
+        <!-- MATERIAL PAGINATOR | Binded to dasources -->
+        <mat-paginator #paginatorRef [pageSize]="10" [pageSizeOptions]="[3, 5, 10]" showFirstLastButtons></mat-paginator>
+    </div>
+</ia-portlet-body>
+</ia-portlet>

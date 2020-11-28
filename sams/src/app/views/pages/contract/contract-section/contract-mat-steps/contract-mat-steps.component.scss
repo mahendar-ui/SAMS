@@ -1,0 +1,26 @@
+@import  "../../../../../../assets/sass/pages/wizard/wizard-3.scss";
+@import "../../contract-section/contract-section.component.scss";
+[data-ktwizard-type="step-content"] {
+	display: none;
+
+	&[data-ktwizard-state="current"] {
+		display: block;
+	}
+}
+.kt-wizard-v2__content .kt-form {
+	width: 100%;
+	padding: 1rem 2rem 4rem;
+}
+.kt__quo-wizard-form-group{
+    margin-bottom: 6px;
+}
+@media (min-width: 1600px){
+	.kt-wizard-v2__content .kt-form {
+		width: 80%;
+		padding: 1rem 2rem 4rem;
+	}
+}
+.kt-grid__item.contract_wizard_steps {
+    margin-top: -40px;
+    margin-left: -7px;
+}

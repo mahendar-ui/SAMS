@@ -1,0 +1,13 @@
+mat-spinner{
+    margin-left: 30%;
+}
+::ng-deep .cdk-overlay-pane{
+overflow: hidden!important;
+}
+.mat-overlay{
+    padding: 30px 30px;
+    p{
+        margin-top: 33px;
+        text-align: center;
+    }
+}

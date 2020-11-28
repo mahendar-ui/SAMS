@@ -1,0 +1,99 @@
+<div class="container">
+    <div class="card col-8">
+        <div class="card-body py-4">
+            <div class="alert alert-warning" *ngIf="account.status == 'pending'" role="alert">
+                Your application is still in reviewing.
+            </div>
+            <div class="alert alert-success" *ngIf="account.status == 'success'"  role="alert">
+               Congartulation..! Your application was approved.
+            </div>
+            <div class="alert alert-rejected" *ngIf="account.status == 'rejected'"   role="alert">
+                Sorry..! Your application was rejected.
+            </div>
+            <div class="form-group row my-2">
+                <label class="col-4 col-form-label">firstname:</label>
+                <div class="col-8">
+                    <span class="form-control-plaintext font-weight-bolder">{{account.firstname}}</span>
+                </div>
+            </div>
+            <div class="form-group row my-2">
+                <label class="col-4 col-form-label">Lastname:</label>
+                <div class="col-8">
+                    <span class="form-control-plaintext font-weight-bolder">{{account.lastname}}</span>
+                </div>
+            </div>
+            <div class="form-group row my-2">
+                <label class="col-4 col-form-label">Student Email:</label>
+                <div class="col-8">
+                    <span class="form-control-plaintext font-weight-bolder">
+                        <a href="#">{{account.student_email}}</a>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group row my-2">
+                <label class="col-4 col-form-label">Student id:</label>
+                <div class="col-8">
+                    <span class="form-control-plaintext font-weight-bolder">
+                        <a href="#">{{account.student_id}}</a>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group row my-2">
+                <label class="col-4 col-form-label">Phone Number:</label>
+                <div class="col-8">
+                    <span class="form-control-plaintext font-weight-bolder">
+                        {{account.phone_number}}
+                    </span>
+                </div>
+            </div>
+            <div class="form-group row my-2">
+                <label class="col-4 col-form-label">University:</label>
+                <div class="col-8">
+                    <span class="form-control-plaintext font-weight-bolder">
+                        {{account.university}}
+                    </span>
+                </div>
+            </div>
+            <div class="form-group row my-2">
+                <label class="col-4 col-form-label">Course:</label>
+                <div class="col-8">
+                    <span class="form-control-plaintext font-weight-bolder">
+                        {{account.course}}
+                    </span>
+                </div>
+            </div>
+            <div class="form-group row my-2">
+                <label class="col-4 col-form-label">Bank:</label>
+                <div class="col-8">
+                    <span class="form-control-plaintext font-weight-bolder">
+                        {{account.bank}}
+                    </span>
+                </div>
+            </div>
+            <div class="form-group row my-2" >
+                <label class="col-4 col-form-label">address:</label>
+                <div class="col-8">
+                    <span class="form-control-plaintext font-weight-bolder">
+                        {{account.address}}
+                    </span>
+                </div>
+            </div>
+            <div class="form-group row my-2">
+                <label class="col-4 col-form-label">City:</label>
+                <div class="col-8">
+                    <span class="form-control-plaintext font-weight-bolder">
+                        {{account.city}}
+                    </span>
+                </div>
+            </div>
+            <div class="form-group row my-2">
+                <label class="col-4 col-form-label">Postcode:</label>
+                <div class="col-8">
+                    <span class="form-control-plaintext font-weight-bolder">
+                        {{account.postcode}}
+                    </span>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>

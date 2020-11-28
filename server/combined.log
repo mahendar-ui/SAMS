@@ -1,0 +1,9 @@
+{"level":"info","message":"What time is the testing at?","service":"user-service"}
+{ level: 'info',
+  message: 'What time is the testing at?',
+  label: 'right meow!',
+  timestamp: '2020-08-12T13:34:55.071Z' }
+{ level: 'info',
+  message: 'What time is the testing at?',
+  label: 'right meow!',
+  timestamp: '2020-08-12T13:39:32.416Z' }

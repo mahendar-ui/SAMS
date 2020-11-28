@@ -1,0 +1,85 @@
+<div class="wizard wizard-3" id="kt_wizard_v3">
+    <!--begin: Form Wizard Step 2-->
+    <div class="pb-5" data-wizard-type="step-content">
+        <form action="#" [formGroup]="employeeProfessionalInfoForm" class="kt-form employ_form">
+            <div class="form-group row">
+                <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                    <mat-form-field class="mat-form-field-fluid" appearance="outline">
+                        <mat-label>Experience</mat-label>
+                        <input matInput placeholder="Enter experience" type="number" formControlName="experience_years" />
+                        <span class="input-group-text" matSuffix>YEARS</span>
+
+                    </mat-form-field>
+                </div>
+                <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                    <mat-form-field class="mat-form-field-fluid" appearance="outline">
+                        <mat-label>Previous company name</mat-label>
+                        <input matInput placeholder="Enter Company Name" formControlName="previous_company" />
+
+                    </mat-form-field>
+                </div>
+                <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Date of joining</mat-label>
+                        <input matInput [matDatepicker]="picker" (focus)="picker.open()"
+                            placeholder="Please Enter Date of Joining" formControlName="hire_date">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                    <mat-form-field class="mat-form-field-fluid" appearance="outline">
+                        <mat-label>Visa Type</mat-label>
+                        <mat-select placeholder="Please select" formControlName="visa_status">
+                            <mat-option>Please select</mat-option>
+                            <mat-option value="work visa">Work Visa</mat-option>
+                            <mat-option value="student visa">Student Visa</mat-option>
+                            <mat-option value="b2 visa">B2 visa</mat-option>
+                            <mat-option value="h1 visa">H1 visa</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                    <mat-form-field class="mat-form-field-fluid" appearance="outline">
+                        <mat-label>Skills</mat-label>
+                        <mat-chip-list #chipList aria-label="Skill selection">
+                            <input placeholder="New skill..." #skillInput [formControl]="skillCtrl"
+                                formControlName="skillGroup" [matAutocomplete]="auto" [matChipInputFor]="chipList"
+                                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                (matChipInputTokenEnd)="add($event)">
+                        </mat-chip-list>
+                        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                            <mat-option *ngFor="let skill of filteredSkills | async" [value]="skill">
+                                {{skill}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+                    <mat-chip *ngFor="let skill of skills" [selectable]="selectable" [removable]="removable"
+                        (removed)="remove(skill)">
+                        {{skill}}
+                        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                    </mat-chip>
+                </div>
+            </div>
+            <!--end: Form Wizard Step 2-->
+        </form>
+        <!--begin: Form Actions -->
+        <div class="d-flex justify-content-between border-top pt-10">
+            <div class="mr-2">
+                <div class="btn btn-light-primary font-weight-bold text-uppercase px-9 py-4" style="display: block;"
+                    (click)="prevStep()">
+                    Previous
+                </div>
+            </div>
+            <div>
+                <div class="btn btn-primary font-weight-bold text-uppercase px-9 py-4" style="display: block;"
+                    (click)="nextStep()">
+                    Next Step
+                </div>
+            </div>
+        </div>
+        <!--end: Form Actions -->
+    </div>
+</div>

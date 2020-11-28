@@ -1,0 +1,39 @@
+.invoice_icon.fa-arrow-right:before {
+    padding: 4px;
+}
+.date-block{
+    display: contents;
+}
+.pending span.invoice_satus{
+    background: #F29339;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+}
+.overdue span.invoice_satus{
+    background: #ed3e3a;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+}
+.sent span.invoice_satus{
+    background: #22a322;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    width: 80px;
+    display: flex;
+}
+.date_sbmt{
+margin-top: -19px;
+position: relative;
+left: -3%;
+padding: 10px 20px;
+}
+.date-block__list {
+    position: relative;
+    left: -3%;
+}
+.inv_st{
+    margin-left: -17px;
+}

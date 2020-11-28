@@ -1,0 +1,95 @@
+<ia-portlet>
+    <ia-portlet-header [title]="'Profile Edit'" [class]="'card-head-lg'">
+        <ng-container ktPortletTools>
+            <a [routerLink]="['/profile-management/profile']" class="btn btn-secondary mr-2" mat-raised-button
+                matTooltip="Back to the Profile list">
+                <i class="la la-arrow-left"></i>
+                <span class="hidden-mobile">Back</span>
+            </a>
+            <a href="javascript:;" class="btn btn-primary mr-2" color="primary" (click)="onSubmit()" mat-raised-button
+                matTooltip="Save">
+                <span class="hidden-mobile">Save</span>
+            </a>
+        </ng-container>
+    </ia-portlet-header>
+    <ia-portlet-body>
+        <!--begin::Form-->
+        <form [formGroup]="profileForm" autocomplete="off">
+            <div class="row form-section form-section-first">
+                <div class="col-lg-6">
+                    <mat-form-field>
+                        <mat-label>Username</mat-label>
+                        <input matInput placeholder="Enter Username" formControlName="username" />
+                        <mat-error>Username is
+                            <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-lg-6">
+                    <mat-form-field>
+                        <mat-label>Email</mat-label>
+                        <input type="email" matInput placeholder="Enter Email" formControlName="email" />
+                        <mat-error>Email is
+                            <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <mat-form-field>
+                            <mat-label>Fullname</mat-label>
+                            <input matInput type="text" placeholder="Fullname" formControlName="fullname" />
+                        </mat-form-field>
+                    </div>    
+                <div class="form-group">
+                    <mat-form-field>
+                        <mat-label>Sign in as</mat-label>
+                        <mat-select formControlName="stakeholder" (selectionChange)="selectedChange($event)">
+                          <mat-option *ngFor="let stakeHolder of stakeHolders" [value]="stakeHolder.value">
+                            {{stakeHolder.viewValue}}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error>
+                            <strong>This is require field</strong>
+                        </mat-error>
+                      </mat-form-field>
+                </div>
+                <div class="form-group" *ngIf="universityField">
+                    <mat-form-field>
+                        <mat-label>Choose University</mat-label>
+                        <mat-select formControlName="stakeholder_university" >
+                          <mat-option *ngFor="let university of universities" [value]="university.value">
+                            {{university.viewValue}}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error>
+                            <strong>This is require field</strong>
+                        </mat-error>
+                      </mat-form-field>
+                </div>
+                <div class="form-group" *ngIf="bankField">
+                    <mat-form-field>
+                        <mat-label>Choose Bank</mat-label>
+                        <mat-select formControlName="stakeholder_bank" >
+                          <mat-option *ngFor="let bank of banks" [value]="bank.value">
+                            {{bank.viewValue}}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error>
+                            <strong>This is require field</strong>
+                        </mat-error>
+                      </mat-form-field>
+                </div>
+                </div>
+                <div class="col-lg-6">
+                    <mat-form-field>
+                        <input placeholder="Phonenumber" matInput type="text" formControlName="phone_number" />
+                    </mat-form-field>
+                </div>
+            </div>
+        </form>
+        <!--end::Form-->
+    </ia-portlet-body>
+</ia-portlet>

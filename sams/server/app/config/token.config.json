@@ -1,0 +1,7 @@
+{
+  "secret": "pixehubinvoicapptoken",
+  "refreshTokenSecret": "pixehubinvoicapprefreshtoken",
+  "port": 3000,
+  "tokenLife": "1h",
+  "refreshTokenLife": "10s"
+}

@@ -1,0 +1,96 @@
+<ia-portlet>
+    <ia-portlet-body>
+        <div class="col-xl-12 col-xxl-7 emp_field">
+            <!--begin: Form Wizard Form-->
+            <form action="#"  [formGroup]="invoiceForm" id="kt_form" class="kt-form employ_form">
+                <!--begin: Form Wizard Step 1-->
+                <div class="pb-5" data-wizard-type="step-content" data-wizard-state="current">
+                    <h4 class="mb-10 font-weight-bold text-dark">Invoice Info</h4>
+                    <div class="row">
+                    <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                        <mat-form-field class="mat-form-field-fluid">
+                            <input matInput placeholder="Enter Firstname" formControlName="firstName"/>
+                            <mat-error>Firstname is
+                                <strong>required</strong>
+                            </mat-error>
+                            <mat-hint align="start">Please enter
+                                <strong>Firstname</strong>
+                            </mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                        <mat-form-field class="mat-form-field-fluid">
+                            <input type="email" matInput placeholder="Enter Email" formControlName="email"/>
+                            <mat-error>Email is
+                                <strong>required</strong>
+                            </mat-error>
+                            <mat-hint align="start">Please enter
+                                <strong>Email</strong>
+                            </mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                        <mat-form-field class="mat-form-field-fluid">
+                            <input matInput placeholder="Enter Phone" formControlName="phoneNumber"/>
+                            <mat-hint align="start">Please enter
+                                <strong>Phone</strong>
+                            </mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                        <mat-form-field class="mat-form-field-fluid">
+                            <input matInput placeholder="Enter Jobid" formControlName="jobId"/>
+                            <mat-hint align="start">Please enter
+                                <strong>Jobid</strong>
+                            </mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-4 kt-margin-bottom-20-mobile emp_date">
+                        <mat-form-field>
+                            <input matInput [matDatepicker]="picker1" placeholder="Please Enter Date" formControlName="date">
+                            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                            <mat-datepicker #picker1></mat-datepicker>
+                        </mat-form-field>
+                  </div>
+                        <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="mat-form-field-fluid">
+                                <input matInput placeholder="Enter Address Line" formControlName="Address" />
+                                <mat-error>Address Line is
+                                    <strong>required</strong>
+                                </mat-error>
+                                <mat-hint align="start">Please enter
+                                    <strong>Address Line</strong>
+                                </mat-hint>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="mat-form-field-fluid">
+                                <input matInput placeholder="City" formControlName="city" />
+                                <mat-error>City is
+                                    <strong>required</strong>
+                                </mat-error>
+                                <mat-hint align="start">Please enter
+                                    <strong>City</strong>
+                                </mat-hint>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="mat-form-field-fluid">
+                                <input matInput placeholder="Enter Pincode" formControlName="pinCode" />
+                                <mat-error>Pincode is
+                                    <strong>required</strong>
+                                </mat-error>
+                                <mat-hint align="start">Please enter
+                                    <strong>Pincode</strong>
+                                </mat-hint>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div (click)="onSubmit()" class="btn btn-success font-weight-bold text-uppercase px-9 py-4" data-wizard-type="action-submit">
+                    Submit
+                </div>
+                </form>
+                </div>
+  </ia-portlet-body>
+</ia-portlet>

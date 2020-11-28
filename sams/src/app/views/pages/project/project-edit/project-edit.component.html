@@ -1,0 +1,112 @@
+<ia-portlet>
+    <ia-portlet-header [class]="'card-head-lg'" [viewLoading$]="loading$">
+        <ng-container ktPortletTools>
+            <a [routerLink]="['/project/project-list']" class="btn btn-secondary mr-2" mat-raised-button
+                matTooltip="Back to the project list">
+                <i class="la la-arrow-left"></i>
+                <span class="hidden-mobile">Back</span>
+            </a>
+            <a href="javascript:;" class="btn btn-primary mr-2" color="primary" (click)="onSubmit()" mat-raised-button
+                matTooltip="Save">
+                <span class="hidden-mobile">Save</span>
+            </a>
+        </ng-container>
+    </ia-portlet-header>
+    <ia-portlet-body>
+        <mat-tab-group class="project_tab">
+            <mat-tab class="project_hide">
+                <ng-template matTabContent>
+                    <form [formGroup]="projectForm" autocomplete="off">
+                        <div class="row">
+                            <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                                <mat-form-field class="mat-form-field-fluid" appearance="outline">
+                                    <mat-label>Project title</mat-label>
+                                    <input matInput placeholder="Enter ProjecTitle" formControlName="projecttitle" />
+                                    <mat-error>Project Title is
+                                        <strong>required</strong>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                                <mat-form-field class="mat-form-field-fluid" appearance="outline">
+                                    <mat-label>Project Owner</mat-label>
+                                    <input matInput placeholder="Enter ProjectOwner" formControlName="projectowner" />
+                                    <mat-error>Project Owner is
+                                        <strong>required</strong>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                                <mat-form-field appearance="outline" class="mat-form-field-fluid">
+                                    <mat-label>Client Name</mat-label>
+                                    <input type="text" placeholder="Please Enter Client" formControlName="projecttype"
+                                        aria-label="client" matInput [formControl]="myControl" [matAutocomplete]="auto">
+                                    <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption="true">
+                                        <mat-option *ngFor="let client of filteredOptions | async"
+                                            [value]="client.clientFirstname">
+                                            {{client.clientFirstname}}
+                                        </mat-option>
+                                    </mat-autocomplete>
+                                    <mat-error>Client Name
+                                        <strong>required</strong>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                                <mat-form-field class="mat-form-field-fluid" appearance="outline">
+                                    <mat-label>Rate</mat-label>
+                                    <input matInput placeholder="Enter rate" type="number"
+                                        formControlName="projectrate" />
+                                    <span matPrefix class="pr_ice_edt">$&nbsp;</span>
+                                    <span matSuffix>.00</span>
+                                    <mat-error>rate
+                                        <strong>required</strong>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                                <mat-form-field class="mat-form-field-fluid" appearance="outline">
+                                    <mat-label>Client Rate</mat-label>
+                                    <input matInput placeholder="Enter client rate" type="number"
+                                        formControlName="clientrate" />
+                                    <span matPrefix class="pr_ice_edt">$&nbsp;</span>
+                                    <span matSuffix>.00</span>
+                                    <mat-error>client rate
+                                        <strong>required</strong>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                                <mat-form-field class="mat-form-field-fluid" appearance="outline">
+                                    <mat-label>location</mat-label>
+                                    <input matInput placeholder="Enter Work Located" formControlName="location" />
+                                    <mat-error>location is
+                                        <strong>required</strong>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                    <mat-label>Start Date</mat-label>
+                                    <input matInput [matDatepicker]="picker1" (focus)="picker1.open()"
+                                        placeholder="Please Enter Start Date" formControlName="startdate">
+                                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker1></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                    <mat-label>End date</mat-label>
+                                    <input matInput [matDatepicker]="picker" (focus)="picker.open()"
+                                        placeholder="Please Enter End Date" formControlName="enddate">
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </form>
+                </ng-template>
+            </mat-tab>
+        </mat-tab-group>
+    </ia-portlet-body>
+</ia-portlet>

@@ -3,7 +3,7 @@
 	<div class="login-form login-signup" style="display: block;">
 		<div class="pb-13 pt-lg-0 pt-5">
 			<h3 class="font-weight-bolder text-dark font-size-h4 font-size-h1-lg"> Sign Up </h3>
-			<p class="text-muted font-weight-bold font-size-h4"> Enter your details to create your account </p>
+			<p class="font-weight-bold font-size-h4"> Enter your details to create your account </p>
 		</div>
 
 		<ia-auth-notice></ia-auth-notice>
@@ -12,7 +12,7 @@
 			<div class="form-group">
 				<mat-form-field>
 					<mat-label>Sign Up as</mat-label>
-					<mat-select formControlName="stakeholder" (selectionChange)="selectedChange($event)">
+					<mat-select formControlName="stakeholder"  [(ngModel)]='loginType' (selectionChange)="selectedChange($event)">
 					  <mat-option *ngFor="let stakeHolder of stakeHolders" [value]="stakeHolder.value">
 						{{stakeHolder.viewValue}}
 					  </mat-option>
@@ -133,7 +133,8 @@
 					</mat-error>
 				</mat-form-field>
 			</div>
-			<div class="form-group">
+			<div class="form-group" style="background: #fff;
+			padding: 0px 8px;">
 				<mat-checkbox name="agree" formControlName="agree">
 					I agree the <a href="javascript:;">terms & conditions</a>
 				</mat-checkbox>

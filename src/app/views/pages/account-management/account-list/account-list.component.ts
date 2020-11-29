@@ -12,8 +12,8 @@ import { AccountRejectComponent } from '../account-reject/account-reject.compone
   template: `
     <h1 mat-dialog-title>{{data.firstname}} {{data.lastname}}</h1>
     <div mat-dialog-content>
-      <p *ngIf='data.status == 0'>Your request to sent to University for review the application.</p>
-      <p *ngIf='data.status == 1'>Application status changed to Rejected.</p>
+      <p *ngIf='data.status == 0'>Your request to sent to University for validate the application.</p>
+      <p *ngIf='data.status == 1'>Application status changed to Approved.</p>
      
     </div>
     <div mat-dialog-actions>

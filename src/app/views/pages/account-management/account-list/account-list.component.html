@@ -34,18 +34,23 @@
                         <div class="d-flex justify-content-between flex-wrap mt-1">
                             <div class="d-flex mr-3">
                                 <a href="#" class="text-dark-75 text-hover-primary font-size-h5 font-weight-bold mr-3">{{account.firstname+' '+ account.lastname}}</a>
-                                <a href="#">
+                                
+                                <div *ngIf="account.status == 'approved'"><div *ngIf="stakeHolder === 'US'" style="
+                                    color: #1bc5a1;
+                                    font-size: 15px;
+                                    font-weight: bold;
+                                ">Your application is approved and account opening will be done by bank shortly <a href="#">
                                     <i class="flaticon2-correct text-success font-size-h5"></i>
-                                </a>
+                                </a></div></div>
                             </div>
                             <div class="my-lg-0 my-3" *ngIf="account.status == 'pending'">
-                                <button class="btn btn-sm btn-warning font-weight-bolder text-uppercase mr-3" *ngIf="stakeHolder == 'BOS'" (click)='requestUniversity(account)'>Request University</button>
+                                <button class="btn btn-sm btn-warning font-weight-bolder text-uppercase mr-3" *ngIf="stakeHolder == 'BOS'" (click)='requestUniversity(account)'>validate with University</button>
                                 <button class="btn btn-sm btn-danger font-weight-bolder text-uppercase" *ngIf="stakeHolder === 'BOS' || stakeHolder === 'UAD'" (click)='applicationReject(account)'>Reject</button>
                             
                             </div>
                             <div class="my-lg-0 my-3" *ngIf="account.status == 'requested'">
                                 <button class="btn btn-sm btn-success font-weight-bolder text-uppercase mr-3" *ngIf="stakeHolder === 'UAD'" (click)='approveApplication(account)'>Approve</button>
-                                <button disabled class="btn btn-sm btn-warning font-weight-bolder text-uppercase mr-3" *ngIf="stakeHolder !== 'UAD'" >Request sent to University</button>
+                                <button disabled class="btn btn-sm btn-warning font-weight-bolder text-uppercase mr-3" *ngIf="stakeHolder !== 'UAD'" >Validate request sent to University</button>
                                 <button class="btn btn-sm btn-danger font-weight-bolder text-uppercase" *ngIf="stakeHolder === 'UAD'" (click)='applicationReject(account)'>Reject</button>
 
                             </div>

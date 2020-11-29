@@ -80,7 +80,7 @@ export class MenuConfig {
           ]
         },
         {
-          title: 'Account Management',
+          title: 'Application Management',
           // roleAccess : [1,3],
           root: true,
           bullet: 'dot',
@@ -88,17 +88,17 @@ export class MenuConfig {
           submenu: [
             {
               roleAccess : [roles.roleType.student],
-              title: 'Account Create',
+              title: 'Application Create',
               page: '/account-management/account-create'
             },
             {
               roleAccess : [roles.roleType.admin],
-              title: 'Account View',
+              title: 'Aplication View',
               page: '/account-management/account-view'
             },{
               roleAccess : [roles.roleType.student,roles.roleType.bank,
                 roles.roleType.university],
-              title: 'Account List',
+              title: 'Application List',
               page: '/account-management/account-list'
             }
           ]

@@ -31,6 +31,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 	bankField : boolean = false;
 	loading = false;
 	errors: any = [];
+	loginType : any;
 	stakeHolders: stakeHolders[] = [
 		{value: 'US', viewValue: 'Student'},
 		{value: 'BOS', viewValue: 'Bank'},
@@ -81,7 +82,16 @@ export class RegisterComponent implements OnInit, OnDestroy {
 	ngOnInit() {
 		this.initRegisterForm();
 	}
-
+	ngDoCheck(){
+		
+		if(localStorage.getItem('portal')){
+			debugger;
+			this.loginType = localStorage.getItem('portal');
+			this.selectLogin(this.loginType);
+			}else{
+				this.loginType = ''
+			}
+	}
 	/*
     * On destroy
     */
@@ -91,6 +101,15 @@ export class RegisterComponent implements OnInit, OnDestroy {
 		this.loading = false;
 	}
 	selectedChange({value}):void{
+		if(value == 'US' || value == 'UAD'){
+			this.bankField = false;
+			this.universityField = true;
+		}else{
+			this.universityField = false;
+			this.bankField = true;
+		}
+	}
+	selectLogin(value):void{
 		if(value == 'US' || value == 'UAD'){
 			this.bankField = false;
 			this.universityField = true;
@@ -185,7 +204,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
 						this.store.dispatch(new Register({authToken: user.accessToken}));
 						// pass notice message to the login page
 						this.authNoticeService.setNotice(this.translate.instant('AUTH.REGISTER.SUCCESS'), 'success');
-						this.router.navigateByUrl('/auth/login');
+						setTimeout(()=>{
+							this.router.navigateByUrl('/auth/login');
+						},500)
+						
 					}
 					
 				} else {

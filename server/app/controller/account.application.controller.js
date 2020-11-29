@@ -135,3 +135,13 @@ exports.approveApplication = (req,res) => {
 			res.status(200).json({msg:"Application Approved", result:req.body });
 	});
 }
+exports.validateApplication = (req,res) => {
+	let account = {
+		status : 'validated'
+	}
+	Account.update(account, 
+		{ where: {Id: req.body.id} }
+	).then(() => {
+			res.status(200).json({msg:"Application Approved", result:req.body });
+	});
+}

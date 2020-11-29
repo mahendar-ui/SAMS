@@ -20,8 +20,8 @@ import { AuthNoticeService, AuthService, Login } from '../../../../core/auth';
  * ! Just example => Should be removed in development
  */
 const DEMO_PARAMS = {
-	EMAIL: 'mahi@gmail.com',
-	PASSWORD: '1234'
+	EMAIL: 'student@gmail.com',
+	PASSWORD: '123'
 };
 interface stakeHolders {
 	value: string;
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 	private unsubscribe: Subject<any>;
 
 	private returnUrl: any;
-
+loginType : any;
 	// Read more: => https://brianflove.com/2016/12/11/anguar-2-unsubscribe-observables/
 
 	/**
@@ -86,11 +86,12 @@ export class LoginComponent implements OnInit, OnDestroy {
 			this.router.navigateByUrl('/dashboard');
 		}
 		this.initLoginForm();
-
+this.authNoticeService.setNotice('');
 		// redirect back to the returnUrl before login
 		this.route.queryParams.subscribe(params => {
 			this.returnUrl = params.returnUrl || '/';
 		});
+		
 	}
 
 	/**
@@ -102,14 +103,20 @@ export class LoginComponent implements OnInit, OnDestroy {
 		this.unsubscribe.complete();
 		this.loading = false;
 	}
-
+	ngDoCheck(){
+		if(localStorage.getItem('portal')){
+			this.loginType = localStorage.getItem('portal');
+			}else{
+				this.loginType = ''
+			}
+	}
 	/**
 	 * Form initalization
 	 * Default params, validators
 	 */
 	initLoginForm() {
 		this.loginForm = this.fb.group({
-			stakeholder: ['', Validators.compose([
+			stakeholder: [this.loginType, Validators.compose([
 				Validators.required
 			])
 			],

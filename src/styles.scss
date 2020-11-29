@@ -99,3 +99,14 @@
 .acc-app .mat-form-field-infix{
   margin-left: 6px;
 }
+.login-bg{
+  background-image: url('assets/media/bg-new.jpg');
+  background-image: no-repeat;
+  background-size: cover;
+}
+#kt_login_form .mat-form-field-flex,
+kt-register .mat-form-field-flex{
+  width: 100%;
+  padding: 5px 7px;
+  background: #fff;
+}

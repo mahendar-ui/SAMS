@@ -17,6 +17,7 @@ module.exports = function(app) {
     app.put('/api/account-to-bank', account.updateBankRequest)
     app.put('/api/reject-application', account.rejectApplication)
     app.put('/api/approve-application', account.approveApplication)
+    app.put('/api/validate-application', account.validateApplication)
     // app.post('/api/users', verifyToken, users.create);
  
     // app.get('/api/users',verifyToken, users.findAll);

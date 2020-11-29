@@ -63,4 +63,9 @@ export class AuthComponent implements OnInit {
 			this.render.appendChild(this.el.nativeElement, styleElement);
 		});
 	}
+	portal(type){
+		if(type){
+			localStorage.setItem('portal',type);
+		}
+	}
 }

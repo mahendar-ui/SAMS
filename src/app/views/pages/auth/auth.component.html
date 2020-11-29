@@ -11,7 +11,7 @@
 				<!--end: Aside header-->
 
 				<!--begin: Aside content-->
-				<div class="card card-custom wave mb-5">
+				<div class="card card-custom wave mb-5" (click)="portal('US')">
 					<div class="card-body">
 						<div class="d-flex align-items-center p-5">
 							<div class="mr-6">
@@ -25,12 +25,12 @@
 								</svg><!--end::Svg Icon--></span>
 							</div>
 							<div class="d-flex flex-column">
-								<a href="#" class="text-dark text-hover-primary font-weight-bold font-size-h4 mb-3">Student Portal</a>
+								<div class="text-dark text-hover-primary font-weight-bold font-size-h4 mb-3">Student Portal</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="card card-custom wave mb-5">
+				<div class="card card-custom wave mb-5" (click)="portal('BOS')">
 					<div class="card-body">
 						<div class="d-flex align-items-center p-5">
 							<div class="mr-6">
@@ -54,12 +54,12 @@
 								</span>
 							</div>
 							<div class="d-flex flex-column">
-								<a href="#" class="text-dark text-hover-primary font-weight-bold font-size-h4 mb-3">Bank Portal</a>
+								<div class="text-dark text-hover-primary font-weight-bold font-size-h4 mb-3">Bank Portal</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="card card-custom wave mb-5">
+				<div class="card card-custom wave mb-5" (click)="portal('UAD')">
 					<div class="card-body">
 						<div class="d-flex align-items-center p-5">
 							<div class="mr-6">
@@ -68,7 +68,7 @@
 								</span>
 							</div>
 							<div class="d-flex flex-column">
-								<a href="#" class="text-dark text-hover-primary font-weight-bold font-size-h4 mb-3">University Portal</a>
+								<div class="text-dark text-hover-primary font-weight-bold font-size-h4 mb-3">University Portal</div>
 							</div>
 						</div>
 					</div>
@@ -94,11 +94,7 @@
 					<div class="opacity-70 font-weight-bold	text-white">
 						&copy; 2020 UEL
 					</div>
-					<div class="d-flex">
-						<a href="#" class="text-white">Privacy</a>
-						<a href="#" class="text-white ml-10">Legal</a>
-						<a href="#" class="text-white ml-10">Contact</a>
-					</div>
+					
 				</div>
 				<!--end: Aside footer for desktop-->
 			</div>
@@ -107,7 +103,7 @@
 		<!--begin::Aside-->
 
 		<!--begin::Content-->
-		<div class="flex-row-fluid d-flex flex-column position-relative p-7 overflow-hidden">
+		<div class="flex-row-fluid d-flex flex-column position-relative p-7 overflow-hidden login-bg">
 			<!--begin::Content header-->
 			<!-- <div
 				class="position-absolute top-0 right-0 text-right mt-5 mb-15 mb-lg-0 flex-column-auto justify-content-center py-5 px-10"
@@ -129,13 +125,9 @@
 			<div
 				class="d-flex d-lg-none flex-column-auto flex-column flex-sm-row justify-content-between align-items-center mt-5 p-5">
 				<div class="text-dark-50 font-weight-bold order-2 order-sm-1 my-2">
-					&copy; 2020 Pixehub
+					&copy; 2020 UEL
 				</div>
-				<div class="d-flex order-1 order-sm-2 my-2">
-					<a href="#" class="text-dark-75 text-hover-primary">Privacy</a>
-					<a href="#" class="text-dark-75 text-hover-primary ml-4">Legal</a>
-					<a href="#" class="text-dark-75 text-hover-primary ml-4">Contact</a>
-				</div>
+				
 			</div>
 			<!--end::Content footer for mobile-->
 		</div>
